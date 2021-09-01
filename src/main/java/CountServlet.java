@@ -8,11 +8,19 @@ import java.io.PrintWriter;
 @WebServlet(urlPatterns = "/count")
 
 public class CountServlet extends HttpServlet {
-    int views = 0;
-    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
-        views++;
+    int count = 0;
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String reset = request.getParameter("reset");
 
-        res.getWriter().printf("Views: %d\n", views);
+        if(reset == null) {
+            count++;
+        } else if(reset.equals("reset")) {
+            count = 0;
+            count++;
+        }
+
+
+        response.getWriter().printf("Total Visits: %d\n", count);
 
     }
 }
