@@ -44,15 +44,17 @@
         </div>
 
         <div>
-            <label ID="toppings">Pick your toppings(We only have meats...)</label><br>
-            <input type="checkbox" id="topping1" name="topping1" value="Pepperoni">
-            <label for="topping1"> Pepperoni</label><br>
-            <input type="checkbox" id="topping2" name="topping2" value="Italian Sausage">
-            <label for="topping2"> Italian Sausage</label><br>
-            <input type="checkbox" id="topping3" name="topping3" value="Bacon">
-            <label for="topping3"> Bacon</label><br>
-            <input type="checkbox" id="topping4" name="topping4" value="Ham">
-            <label for="topping4"> Ham</label><br>
+            <input type="checkbox" id="Pepperoni" name="toppings" value="Pepperoni">
+            <label for="Pepperoni"> Pepperoni</label><br>
+
+            <input type="checkbox" id="Italian Sausage" name="toppings" value="Italian Sausage">
+            <label for="Italian Sausage"> Italian Sausage</label><br>
+
+            <input type="checkbox" id="Bacon" name="toppings" value="Bacon">
+            <label for="Bacon"> Bacon</label><br>
+
+            <input type="checkbox" id="Ham" name="toppings" value="Ham">
+            <label for="Ham"> Ham</label><br>
         </div>
 
         <div>

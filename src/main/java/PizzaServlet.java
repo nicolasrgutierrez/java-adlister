@@ -1,34 +1,31 @@
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
 
-@WebServlet(name = "PizzaServlet", value = "/pizza-order")
+@WebServlet(name = "PizzaServlet", urlPatterns = "/pizza-order")
 public class PizzaServlet extends HttpServlet {
 
-    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/pizza.jsp").forward(request, response);
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         String crust = request.getParameter("crust");
         String sauce = request.getParameter("sauce");
         String size = request.getParameter("size");
-        String topping1 = request.getParameter("topping1");
-        String topping2 = request.getParameter("topping2");
-        String topping3 = request.getParameter("topping3");
-        String topping4 = request.getParameter("topping4");
         String address = request.getParameter("address");
+        String[] toppings = request.getParameterValues("toppings");
 
-        if (request.getMethod().equalsIgnoreCase("post")) {
             System.out.println(crust);
             System.out.println(sauce);
             System.out.println(size);
-            System.out.println(topping1);
-            System.out.println(topping2);
-            System.out.println(topping3);
-            System.out.println(topping4);
+            System.out.println(Arrays.toString(toppings));
             System.out.println(address);
-        }
 
     }
 

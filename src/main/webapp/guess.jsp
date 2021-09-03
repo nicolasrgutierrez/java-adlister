@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: nicolasgutierrez
   Date: 9/3/21
-  Time: 11:46 AM
+  Time: 2:43 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,10 +11,12 @@
     <title>Title</title>
 </head>
 <body>
-<style>
-    body{
-        background-color: ${color};
-    }
-</style>
+<form action="/guess" method="post">
+
+    <input type="number" min="1" max="3" name="guessed_number">
+
+    <input type="submit">
+
+</form>
 </body>
 </html>
