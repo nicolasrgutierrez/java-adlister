@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "LoginServlet", value = "/pizza-order")
+@WebServlet(name = "PizzaServlet", value = "/pizza-order")
 public class PizzaServlet extends HttpServlet {
 
     @Override
