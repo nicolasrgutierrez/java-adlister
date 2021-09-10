@@ -40,23 +40,33 @@ public class MySQLAdsDao implements Ads {
 
     @Override
     public Long insert(Ad ad) {
-        try {
-            Statement stmt = connection.createStatement();
-            stmt.executeUpdate(createInsertQuery(ad), Statement.RETURN_GENERATED_KEYS);
-            ResultSet rs = stmt.getGeneratedKeys();
-            rs.next();
-            return rs.getLong(1);
-        } catch (SQLException e) {
-            throw new RuntimeException("Error creating a new ad.", e);
-        }
+            String query = "insert into ads (user_id, title, description) values(?, ?, ?)";
+
+            System.out.println(query);
+
+            try {
+                PreparedStatement stmt = connection.prepareStatement(query);
+
+                stmt.setLong(1, ad.getUserId());
+                stmt.setString(2, ad.getTitle());
+                stmt.setString(3, ad.getDescription());
+
+                stmt.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
+                ResultSet rs = stmt.getGeneratedKeys();
+                return rs.getLong(1);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            return null;
     }
 
-    private String createInsertQuery(Ad ad) {
-        return "INSERT INTO ads(user_id, title, description) VALUES "
-            + "(" + ad.getUserId() + ", "
-            + "'" + ad.getTitle() +"', "
-            + "'" + ad.getDescription() + "')";
-    }
+//    private String createInsertQuery(Ad ad) {
+//        return "INSERT INTO ads(user_id, title, description) VALUES "
+//            + "(" + ad.getUserId() + ", "
+//            + "'" + ad.getTitle() +"', "
+//            + "'" + ad.getDescription() + "')";
+//    }
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
